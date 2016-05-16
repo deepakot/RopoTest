@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity  implements StoryListAdapter.MyOnclickListener{
+public class MainActivity extends AppCompatActivity  implements StoryListAdapter.MyOnclickListener,DetailDialogFragment.DetailOnclickListener{
     private RecyclerView recyclerView;
     private StoryListAdapter sAdapter;
     private static ArrayList<StoryData> storyList=new ArrayList<>();
@@ -120,5 +120,11 @@ public class MainActivity extends AppCompatActivity  implements StoryListAdapter
             return null;
         }
         return outJson;
+    }
+
+
+    @Override
+    public void changeImage1(String year1, Boolean dofollow) {
+        changeImage(year1,dofollow);
     }
 }

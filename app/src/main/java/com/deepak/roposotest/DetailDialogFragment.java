@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.deepak.roposotest.Models.StoryData;
 import com.deepak.roposotest.Models.UserData;
 import com.squareup.picasso.Picasso;
@@ -23,6 +22,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class DetailDialogFragment extends DialogFragment{
     Dialog d;
+    public DetailOnclickListener detailOnclickListener;
     String id,db,description,si,title,type,url,user_name,user_id,user_image;
     int likes_count,comment_count;
     Boolean is_like,is_following;
@@ -181,6 +181,8 @@ public class DetailDialogFragment extends DialogFragment{
                     followButton.setBackgroundResource(R.drawable.un_follow);
                     is_following=true;
                 }
+                detailOnclickListener = (DetailOnclickListener) getActivity();
+                detailOnclickListener.changeImage1(db,is_following);
             }
         });
 
@@ -197,5 +199,8 @@ public class DetailDialogFragment extends DialogFragment{
             }
         });
         return root;
+    }
+    public interface DetailOnclickListener {
+        public void changeImage1(String year1,Boolean dofollow);
     }
 }
